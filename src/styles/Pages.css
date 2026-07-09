@@ -1,0 +1,70 @@
+/* =====================================================
+   Generic Inner Pages — CyberShield AI
+   Shared styles for Learn, ScamAwareness, etc.
+   ===================================================== */
+
+.inner-page {
+  min-height: calc(100vh - 64px);
+  padding-block: var(--space-xl);
+}
+
+/* ---------- Page hero banner ---------- */
+.inner-page__hero {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.inner-page__eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.inner-page__title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.inner-page__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+}
+
+/* ---------- Coming soon placeholder ---------- */
+.placeholder-box {
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.placeholder-box__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+.placeholder-box__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.placeholder-box__desc {
+  font-size: 0.9rem;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .inner-page__hero {
+    padding-block: var(--space-lg);
+  }
+}

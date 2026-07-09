@@ -1,0 +1,306 @@
+/* =====================================================
+   About Page — CyberShield AI
+   ===================================================== */
+
+.about-content {
+  padding-bottom: 4rem;
+}
+
+/* ── Project Introduction body card ── */
+.about-intro-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.about-intro-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.about-intro-text strong {
+  color: var(--color-text-heading);
+}
+
+.about-section {
+  padding-block: 3rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-section:last-child {
+  border-bottom: none;
+}
+
+/* ── Section Header ── */
+.about-section-header {
+  margin-bottom: 2rem;
+}
+
+.about-section-title {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* ── Mission & Vision Grid ── */
+.about-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.about-mv-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+}
+
+.about-mv-icon {
+  font-size: 2.5rem;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,212,255,0.07);
+  border-radius: var(--radius-md);
+}
+
+.about-mv-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.about-mv-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Features Grid ── */
+.about-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.about-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+}
+
+.about-feature-icon {
+  font-size: 1.75rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,212,255,0.07);
+  border-radius: var(--radius-sm);
+}
+
+.about-feature-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.about-feature-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Tech Stack ── */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+}
+
+.tech-icon {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.tech-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.tech-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Timeline ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 700px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+/* Vertical connecting line */
+.timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 52px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-border));
+}
+
+.timeline-node {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-step {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0a0f1e;
+  letter-spacing: 0.02em;
+}
+
+.timeline-body {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.timeline-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0 0 0.35rem;
+}
+
+.timeline-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Future Grid ── */
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.future-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.future-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+
+.future-text {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── IBM Credit ── */
+.ibm-credit {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(124,92,216,0.06));
+  border-color: rgba(0,212,255,0.2);
+}
+
+.ibm-credit__icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,212,255,0.1);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.ibm-credit__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0 0 0.5rem;
+}
+
+.ibm-credit__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-mv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ibm-credit {
+    flex-direction: column;
+  }
+}

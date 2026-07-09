@@ -1,0 +1,148 @@
+/* =====================================================
+   Safety Tips — CyberShield AI
+   ===================================================== */
+
+.tips-section {
+  padding-bottom: 4rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Tip Card ── */
+.tip-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: default;
+}
+
+/* Color accents per category */
+.tip-blue  { border-top: 3px solid #3b82f6; }
+.tip-purple{ border-top: 3px solid var(--color-accent-2); }
+.tip-teal  { border-top: 3px solid #14b8a6; }
+.tip-orange{ border-top: 3px solid #f97316; }
+.tip-green { border-top: 3px solid var(--color-success); }
+.tip-red   { border-top: 3px solid var(--color-danger); }
+.tip-pink  { border-top: 3px solid #ec4899; }
+.tip-yellow{ border-top: 3px solid var(--color-warning); }
+
+/* ── Card Header ── */
+.tip-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.tip-icon {
+  font-size: 1.75rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.06);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.tip-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.tip-progress-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0.15rem 0 0;
+}
+
+/* ── Progress Bar ── */
+.tip-progress-track {
+  height: 6px;
+  background: var(--color-surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.tip-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+/* ── Checklist ── */
+.tip-checklist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tip-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--color-surface-2);
+  user-select: none;
+}
+
+.tip-check-item:hover {
+  border-color: var(--color-accent);
+  background: rgba(0, 212, 255, 0.04);
+}
+
+.tip-check-item.checked {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.tip-check-item.checked .tip-check-text {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.tip-checkbox {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.tip-check-text {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  transition: all var(--transition);
+}
+
+/* ── Completion Badge ── */
+.tip-complete-badge {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
