@@ -48,7 +48,7 @@ app.use(
 // ── Health check route ────────────────────────────────
 // GET /api/health
 // Quick ping to confirm the server is up and running.
-app.get("/", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     success: true,
     message: "CyberShield AI Backend is running 🚀"
