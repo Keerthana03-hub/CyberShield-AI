@@ -48,8 +48,11 @@ app.use(
 // ── Health check route ────────────────────────────────
 // GET /api/health
 // Quick ping to confirm the server is up and running.
-app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "Backend is running" });
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "CyberShield AI Backend is running 🚀"
+  });
 });
 
 // ── API Route groups ──────────────────────────────────
