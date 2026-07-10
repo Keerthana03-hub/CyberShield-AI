@@ -1,69 +1,75 @@
 /**
  * server.js — CyberShield AI Backend
- * ─────────────────────────────────────────────────────
+ * -----------------------------------
  * Entry point for the Express application.
- * Responsibilities:
- *   • Load environment variables from .env
- *   • Configure Express middleware (JSON parsing, CORS)
- *   • Mount API route groups
- *   • Attach global error handler
- *   • Start the HTTP server
- * ─────────────────────────────────────────────────────
  */
 
-// ── Core imports ──────────────────────────────────────
 const express = require("express");
-const cors    = require("cors");
-require("dotenv").config(); // loads .env into process.env
+const cors = require("cors");
+require("dotenv").config();
 
-// ── Route imports ─────────────────────────────────────
-const chatRoutes  = require("./routes/chatRoutes");
+// Routes
+const chatRoutes = require("./routes/chatRoutes");
 const fraudRoutes = require("./routes/fraudRoutes");
 
-// ── Middleware imports ────────────────────────────────
+// Error Handler
 const errorHandler = require("./middleware/errorHandler");
 
-// ── App initialisation ────────────────────────────────
-const app  = express();
+// App Initialization
+const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ── Global Middleware ─────────────────────────────────
+// ---------------- Middleware ----------------
 
-// Parse incoming JSON request bodies
+// Parse JSON
 app.use(express.json());
 
-// Parse URL-encoded form data
+// Parse URL Encoded Data
 app.use(express.urlencoded({ extended: true }));
 
-// Enable Cross-Origin Resource Sharing so the React
-// frontend (running on a different port) can call this API.
+// ---------------- CORS ----------------
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CORS_ORIGIN,
+];
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+    origin: function (origin, callback) {
+      // Allow Postman, curl, server-to-server requests
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST"],
+    credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// ── Health check route ────────────────────────────────
-// GET /api/health
-// Quick ping to confirm the server is up and running.
+// ---------------- Health Check ----------------
+
 app.get("/api/health", (req, res) => {
-  res.json({
+  res.status(200).json({
     success: true,
-    message: "CyberShield AI Backend is running 🚀"
+    message: "CyberShield AI Backend is running 🚀",
   });
 });
 
-// ── API Route groups ──────────────────────────────────
-// All chat endpoints live under /api/chat
-app.use("/api/chat",  chatRoutes);
+// ---------------- Routes ----------------
 
-// All fraud-analysis endpoints live under /api/fraud
+app.use("/api/chat", chatRoutes);
 app.use("/api/fraud", fraudRoutes);
 
-// ── 404 handler ───────────────────────────────────────
-// Catches any request that didn't match a route above.
+// ---------------- 404 ----------------
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -71,14 +77,15 @@ app.use((req, res) => {
   });
 });
 
-// ── Global error handler ──────────────────────────────
-// Must be registered LAST — after all routes.
+// ---------------- Error Handler ----------------
+
 app.use(errorHandler);
 
-// ── Start server ─────────────────────────────────────
+// ---------------- Start Server ----------------
+
 app.listen(PORT, () => {
-  console.log(`\n🛡️  CyberShield AI Backend`);
-  console.log(`   Environment : ${process.env.NODE_ENV || "development"}`);
-  console.log(`   Listening on: http://localhost:${PORT}`);
-  console.log(`   Health check: http://localhost:${PORT}/api/health\n`);
+  console.log("\n🛡️ CyberShield AI Backend");
+  console.log(`Environment : ${process.env.NODE_ENV || "development"}`);
+  console.log(`Listening on : http://localhost:${PORT}`);
+  console.log(`Health Check : http://localhost:${PORT}/api/health\n`);
 });
