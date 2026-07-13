@@ -312,3 +312,289 @@
     padding: 0.75rem 1rem;
   }
 }
+
+/* =====================================================
+   Voice Assistant & File Upload — New Feature Styles
+   ===================================================== */
+
+/* ── Hidden file input ── */
+.chat-file-input-hidden {
+  display: none;
+}
+
+/* ── Icon buttons (mic + attachment) ── */
+.chat-icon-btn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  padding: 0;
+  line-height: 1;
+}
+
+.chat-icon-btn:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.chat-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Mic button active (listening) state ── */
+.chat-mic-btn.active {
+  border-color: var(--color-danger);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-danger);
+  animation: mic-pulse-btn 1.4s infinite;
+}
+
+@keyframes mic-pulse-btn {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);  }
+}
+
+/* ── Speaker button on AI bubbles ── */
+.bubble-speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  gap: 0.3rem;
+}
+
+.bubble-speak-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.bubble-speak-btn.speaking {
+  border-color: var(--color-accent-2);
+  color: var(--color-accent-2);
+  background: rgba(124, 92, 216, 0.1);
+}
+
+/* ── Microphone listening status bar ── */
+.mic-listening-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.5rem;
+  background: rgba(239, 68, 68, 0.08);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.mic-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-danger);
+  display: inline-block;
+  animation: mic-dot-pulse 1.2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes mic-dot-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* ── File preview banner (above the input area) ── */
+.file-preview-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  border-top: 1px solid rgba(0, 212, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+/* ── Text-based file preview ── */
+.file-preview-text-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.file-preview-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.file-preview-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.file-preview-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-preview-size {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.file-preview-ready {
+  font-size: 0.75rem;
+  color: var(--color-success);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* ── Image-based file preview ── */
+.file-preview-image-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.file-preview-image {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.file-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+}
+
+/* ── Remove-attachment button ── */
+.file-preview-remove {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  margin-left: auto;
+}
+
+.file-preview-remove:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* ── File processing indicator ── */
+.file-processing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  border-top: 1px solid rgba(0, 212, 255, 0.12);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+}
+
+.file-spinner {
+  border-color: rgba(0, 212, 255, 0.3);
+  border-top-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ── Image preview inside a chat bubble ── */
+.bubble-image-preview {
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ── Error variants ── */
+.chat-voice-error,
+.chat-file-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.chat-error-dismiss {
+  background: transparent;
+  border: none;
+  color: #f87171;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.chat-error-dismiss:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* ── Responsive tweaks for new elements ── */
+@media (max-width: 600px) {
+  .chat-icon-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .file-preview-banner {
+    padding: 0.6rem 1rem;
+  }
+
+  .file-preview-ready {
+    display: none; /* Hide the "ready" label on tiny screens */
+  }
+
+  .mic-listening-indicator,
+  .file-processing-indicator {
+    padding: 0.5rem 1rem;
+  }
+}
